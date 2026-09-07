@@ -290,7 +290,7 @@ if (cells.length > 0) {
 
           }
 
-          alert("🎉 You Win!");
+          showPopup("🎉 You Win!");
 
         }
 
@@ -315,11 +315,11 @@ if (cells.length > 0) {
               losses
             );
 
-            alert("🤖 Computer Wins!");
+            showPopup("🤖 Computer Wins!");
 
           } else {
 
-            alert("🎉 O Wins!");
+            showPopup("🎉 O Wins!");
 
           }
 
@@ -362,7 +362,7 @@ if (cells.length > 0) {
 
       }
 
-      alert("🤝 It's a Draw!");
+      showPopup("🤝 It's a Draw!");
 
       return true;
     }
@@ -842,7 +842,7 @@ if (resetScoreBtn) {
   resetScoreBtn.addEventListener("click", function () {
 
     const confirmReset =
-      confirm(
+      showPopup(
         "Are you sure you want to reset the score?"
       );
 
@@ -881,7 +881,7 @@ if (resetStats) {
   resetStats.addEventListener("click", function () {
 
     const confirmReset =
-      confirm(
+      showPopup(
         "Are you sure you want to reset statistics?"
       );
 
@@ -1016,8 +1016,28 @@ if (resetSettings) {
 
     stopMusic();
 
-    alert("⚙️ Settings reset!");
+    showPopup("⚙️ Settings reset!");
 
   });
 
+}
+// ===============================
+// CUSTOM POPUP
+// ===============================
+
+const customPopup = document.getElementById("customPopup");
+const popupMessage = document.getElementById("popupMessage");
+const popupOk = document.getElementById("popupOk");
+
+function showPopup(message) {
+  if (!customPopup || !popupMessage) return;
+
+  popupMessage.textContent = message;
+  customPopup.style.display = "flex";
+}
+
+if (popupOk) {
+  popupOk.addEventListener("click", function () {
+    customPopup.style.display = "none";
+  });
 }
